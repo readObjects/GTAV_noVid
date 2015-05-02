@@ -2,8 +2,6 @@
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using System.Drawing;
-using System.Collections.Generic;
 
 namespace GTAV_noVid
 {
@@ -15,16 +13,15 @@ namespace GTAV_noVid
             InitializeComponent();
         }
 
-        //Disclaimer for people who decompled it: Yes, I am not the best coder.
+        //Yes, I am not the best coder.
         //What it does: It just searches for 706C6174666F726D3A2F6D6F766965732F726F636B737461725F6C6F676F730062696B
         //in the GTA5.exe and overwrites it with zeros.
-        //Please give me credit if you want to modify the tool.
-        //test123
+        //Please give credit if you want to modify the tool.
 
-        string filePath = "C:/";
+        string filePath = "C:\\";
         string stringDebug = "";
         int firstByte = -1, lastByte = -1, lenghtByte;
-        string installpath = "C:/";
+        string installpath = "C:\\";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -75,7 +72,6 @@ namespace GTAV_noVid
                     {
                         installpath = regKey.GetValue("InstallFolder").ToString();
                     }
-                
                 }
             }
             catch {}

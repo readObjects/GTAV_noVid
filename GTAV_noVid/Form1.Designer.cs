@@ -94,7 +94,7 @@
             this.Controls.Add(this.lblDebug);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPatch);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "༼ つ ◕_◕ ༽つ GTAV - No intro video - by Xeramon v0.9.8";
             this.Load += new System.EventHandler(this.Form1_Load);
