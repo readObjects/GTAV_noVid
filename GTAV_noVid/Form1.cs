@@ -22,6 +22,7 @@ namespace GTAV_noVid
         string stringDebug = "";
         int firstByte = -1, lastByte = -1, lenghtByte;
         string installpath = "C:\\";
+        bool vidFound = false;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -62,19 +63,21 @@ namespace GTAV_noVid
                     installpath = regKey.GetValue("InstallFolderSteam").ToString();
                     installpath = installpath.Remove(installpath.Length - 4);
                 }
-
                 else
+
                 {
                     RegistryKey regKey2 = Registry.LocalMachine;
-                    regKey = regKey.OpenSubKey(@"Software\Wow6432Node\rockstar games\Grand Theft Auto V");
+                    regKey2 = regKey2.OpenSubKey(@"Software\Wow6432Node\rockstar games\Grand Theft Auto V");
 
-                    if (regKey != null)
+                    if (regKey2 != null)
                     {
-                        installpath = regKey.GetValue("InstallFolder").ToString();
+                        installpath = regKey2.GetValue("InstallFolder").ToString();
                     }
                 }
             }
-            catch {}
+            catch 
+            {
+            }
             //HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\rockstar games
             OpenFileDialog fileOpenDialog = new OpenFileDialog();
             fileOpenDialog.Title = "Open GTA5.exe";
@@ -121,20 +124,29 @@ namespace GTAV_noVid
                     firstByte = i;
                     lastByte = i + pattern.Length;
                     lenghtByte = pattern.Length;
-                    stringDebug += "Intro video found! \r\n";
                     stringDebug += "First byte: " + firstByte.ToString("X") + " \r\nLast byte: " + lastByte.ToString("X") + "\r\n";
-                    stringDebug += "Debug: "+ getBytesDec(firstByte, lenghtByte) + "\r\n";
+                    stringDebug += "Debug: " + getBytesDec(firstByte, lenghtByte) + "\r\n";
                     stringDebug += "Intro video was successful cut." + "\r\n";
+                    stringDebug += "Project page: https://github.com/Xeramon/GTAV_noVid";
+                    vidFound = true;
                     break;
 
                 }
                 else
                 {
-                    stringDebug = "No intro video found." + "\r\n" ;
-
+                    vidFound = false;
                 }
             }
-            lblDebug.Text += stringDebug + "\r\n";
+
+            if (vidFound == true)
+            {
+                lblDebug.Text += "Intro video found! \r\n" + stringDebug + "\r\n";
+            }
+
+            else
+            {
+                lblDebug.Text += "Intro video NOT found! \r\n" + stringDebug + "\r\n";
+            }
         }
 
         private int getBytesDec(int readStart, int lenghtByte)

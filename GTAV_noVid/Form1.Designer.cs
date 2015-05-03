@@ -96,7 +96,7 @@
             this.Controls.Add(this.btnPatch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
-            this.Text = "༼ つ ◕_◕ ༽つ GTAV - No intro video - by Xeramon v0.9.8";
+            this.Text = "༼ つ ◕_◕ ༽つ GTAV - No intro video - by Xeramon v1.0.0a";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
