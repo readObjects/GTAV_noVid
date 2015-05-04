@@ -6,4 +6,4 @@ What it does? It just deletes some bytes in the GTA5.exe so there is no intro vi
 The program is very poorly written and not very efficient, but it works.
 
 
-![9qdyr0u](https://cloud.githubusercontent.com/assets/3026792/7442488/dc995ac6-f113-11e4-8939-93491d538353.png)
+![___v1 0 0a](https://cloud.githubusercontent.com/assets/3026792/7457273/812cf87c-f28b-11e4-9829-61dcada755fd.png)
