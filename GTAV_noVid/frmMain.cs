@@ -5,10 +5,10 @@ using Microsoft.Win32;
 
 namespace GTAV_noVid
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
 
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -53,6 +53,7 @@ namespace GTAV_noVid
 
         private void btnPatch_Click(object sender, EventArgs e)
         {
+            stringDebug = "";
             try
             {
                 RegistryKey regKey = Registry.LocalMachine;
@@ -134,6 +135,7 @@ namespace GTAV_noVid
                     lenghtByte = pattern.Length;
                     stringDebug += "First byte: " + firstByte.ToString("X") + " \r\nLast byte: " + lastByte.ToString("X") + "\r\n";
                     stringDebug += "Debug: " + getBytesDec(firstByte, lenghtByte) + "\r\n";
+                        //getBytesDec(firstByte, lenghtByte);
                     stringDebug += "Intro video was successful cut." + "\r\n";
                     stringDebug += "Project page: https://github.com/Xeramon/GTAV_noVid \r\n";
                     vidFound = true;
@@ -153,7 +155,7 @@ namespace GTAV_noVid
 
             else
             {
-                lblDebug.Text += "Intro video NOT found! \r\n" + stringDebug + "\r\n";
+                lblDebug.Text += "Intro video NOT found! (already patched? if not, then conntact me on Github) \r\nProject page: https://github.com/Xeramon/GTAV_noVid \r\n" + stringDebug + "\r\n";
             }
             }
         }
