@@ -86,16 +86,23 @@ namespace GTAV_noVid
             fileOpenDialog.Filter = "GTA5.exe|GTA5.exe|All files (*.*)|*.*";
             fileOpenDialog.FilterIndex = 1;
 
-            lblDebug.Text += "installpath: " + installpath + "\r\n";
+            lblDebug.Text += "Initial path: " + installpath + "\r\n";
 
             if (fileOpenDialog.ShowDialog() == DialogResult.OK)
             {
 
                 filePath = fileOpenDialog.FileName;
-                //filePath = lblPath.Text;
-                lblDebug.Text += "filePath: " + filePath + "\r\n";
+                lblDebug.Text += "File path: " + filePath + "\r\n";
 
-            }
+                try
+                {
+                    File.Copy(filePath, filePath + ".bak");
+                    stringDebug += "Backup: " + filePath + ".bak" + "\r\n";
+                }
+                catch
+                {
+                    stringDebug += "File COULDN'T be backed up (already exists?). \r\n";
+                }
 
             byte[] pattern = { 112, 108, 97, 116, 102, 111, 114, 109, 58, 47, 109, 111, 118, 105, 101, 115, 47, 114, 111, 99, 107, 115, 116, 97, 114, 95, 108, 111, 103, 111, 115, 0, 98, 105, 107 };
             byte[] data = {0};
@@ -105,6 +112,7 @@ namespace GTAV_noVid
                 data = File.ReadAllBytes(@filePath);
             }
             catch { }
+
 
             for (int i = 0; i < data.Length - pattern.Length; i++)
             {
@@ -127,7 +135,7 @@ namespace GTAV_noVid
                     stringDebug += "First byte: " + firstByte.ToString("X") + " \r\nLast byte: " + lastByte.ToString("X") + "\r\n";
                     stringDebug += "Debug: " + getBytesDec(firstByte, lenghtByte) + "\r\n";
                     stringDebug += "Intro video was successful cut." + "\r\n";
-                    stringDebug += "Project page: https://github.com/Xeramon/GTAV_noVid";
+                    stringDebug += "Project page: https://github.com/Xeramon/GTAV_noVid \r\n";
                     vidFound = true;
                     break;
 
@@ -146,6 +154,7 @@ namespace GTAV_noVid
             else
             {
                 lblDebug.Text += "Intro video NOT found! \r\n" + stringDebug + "\r\n";
+            }
             }
         }
 
